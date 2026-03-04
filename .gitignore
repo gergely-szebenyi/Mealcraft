@@ -1,0 +1,123 @@
+# ============================================================
+# Gradle
+# ============================================================
+.gradle/
+**/build/
+!src/**/build/
+!gradle/wrapper/gradle-wrapper.jar
+local.properties
+gradle.properties.local
+.gradletasknamecache
+
+# ============================================================
+# Kotlin / Kotlin Multiplatform
+# ============================================================
+.kotlin/
+kotlin-js-store/
+
+# ============================================================
+# Android
+# ============================================================
+*.apk
+*.aab
+*.ap_
+*.dex
+gen/
+captures/
+.externalNativeBuild/
+.cxx/
+*.keystore
+!debug.keystore
+
+# ============================================================
+# IntelliJ IDEA / Android Studio
+# ============================================================
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# ============================================================
+# Xcode / iOS
+# ============================================================
+xcuserdata/
+*.xcuserstate
+*.pbxuser
+!default.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!default.mode2v3
+*.perspectivev3
+!default.perspectivev3
+*.xcodeproj/*
+!*.xcodeproj/project.pbxproj
+!*.xcodeproj/xcshareddata/
+!*.xcodeproj/project.xcworkspace/
+!*.xcworkspace/contents.xcworkspacedata
+**/xcshareddata/WorkspaceSettings.xcsettings
+DerivedData/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+*.moved-aside
+*.xccheckout
+
+# ============================================================
+# CocoaPods
+# ============================================================
+Pods/
+Podfile.lock
+
+# ============================================================
+# Swift Package Manager
+# ============================================================
+.swiftpm/
+*.resolved
+
+# ============================================================
+# macOS
+# ============================================================
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# ============================================================
+# Windows
+# ============================================================
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# ============================================================
+# Linux
+# ============================================================
+*~
+.directory
+.Trash-*
+
+# ============================================================
+# Node / Web (if any tooling is added)
+# ============================================================
+node_modules/
+
+# ============================================================
+# Secrets & Environment
+# ============================================================
+*.env
+.env
+.env.*
+google-services.json
+GoogleService-Info.plist
+secrets.properties
+keystore.properties

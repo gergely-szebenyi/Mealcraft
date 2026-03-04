@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="Label_Weekly_Menu">Weekly Menu</string>
+    <string name="Label_Header_Title">Generate unique recipes\nfrom your ingredients</string>
+    <string name="Label_VO_App_Logo">App Logo</string>
+</resources>
