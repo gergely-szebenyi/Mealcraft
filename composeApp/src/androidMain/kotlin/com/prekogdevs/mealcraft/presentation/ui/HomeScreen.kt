@@ -5,9 +5,12 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import com.prekogdevs.mealcraft.domain.IngredientUnit
 import com.prekogdevs.mealcraft.presentation.theme.MealCraftTheme
 import com.prekogdevs.mealcraft.presentation.ui.components.AppScreen
 import com.prekogdevs.mealcraft.presentation.ui.components.HeaderSection
+import com.prekogdevs.mealcraft.presentation.ui.components.ManualEntrySection
 import com.prekogdevs.mealcraft.presentation.ui.components.PhotoIngredientsSection
 
 @Composable
@@ -28,6 +31,22 @@ private fun HomeScreenContent() {
         onUploadClick = { /* launch photo picker */ },
     )
     Spacer(modifier = Modifier.height(MealCraftTheme.spacing.space16))
+
+    // TODO
+    ManualEntrySection(
+        ingredientName        = "ingredientName",
+        amount                = "currentAmount",
+        selectedUnit          = IngredientUnit.GRAM,
+        isUnitExpanded        = false,
+        onNameChanged         = {  },
+        onAmountChanged       = {  },
+        onUnitSelected        = {  },
+        onUnitDropdownToggle  = {  },
+        onUnitDropdownDismiss = {  },
+        onAddClick            = {  }
+    )
+
+    Spacer(modifier = Modifier.height(80.dp))
 }
 
 @Composable

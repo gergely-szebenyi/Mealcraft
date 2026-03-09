@@ -7,4 +7,6 @@
     <string name="Label_Upload_Image">Click to upload image</string>
     <string name="Label_Photo_Your_Ingredients">Photo Your Ingredients</string>
     <string name="Label_Photo_Your_Ingredients_Desc">Take a photo of your ingredients and we\'ll\nrecognize them automatically</string>
+    <string name="Label_Add_Manually">Add Manually</string>
+    <string name="Label_Enter_Ingredients_Manually">Enter ingredients manually</string>
 </resources>
