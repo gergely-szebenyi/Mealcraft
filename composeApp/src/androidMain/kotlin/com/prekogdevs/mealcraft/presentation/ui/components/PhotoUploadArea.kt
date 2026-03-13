@@ -42,17 +42,17 @@ fun PhotoUploadArea(
             .fillMaxWidth()
             .height(160.dp)
             .clickable(onClick = onClick),
-        contentAlignment = Alignment.Center,
+        contentAlignment = Alignment.Center
     ) {
         if (capturedImageUri != null) {
             val context = LocalContext.current
             AsyncImage(
+                modifier = Modifier.fillMaxSize(),
                 model = ImageRequest.Builder(context)
                     .data(capturedImageUri.toUri())
                     .build(),
                 contentDescription = null,
                 contentScale = ContentScale.Fit,
-                modifier = Modifier.fillMaxSize(),
                 onError = { state ->
                     android.util.Log.e("PhotoUploadArea", "Coil error: ${state.result.throwable}")
                 },
