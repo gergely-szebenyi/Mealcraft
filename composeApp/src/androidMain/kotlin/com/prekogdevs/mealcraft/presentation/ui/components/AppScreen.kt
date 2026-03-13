@@ -11,7 +11,7 @@ import com.prekogdevs.mealcraft.presentation.theme.MealCraftTheme
 
 @Composable
 fun AppScreen(
-    screenContent : @Composable () -> Unit
+    screenContent: @Composable () -> Unit
 ) {
     MealCraftTheme(
         content = {

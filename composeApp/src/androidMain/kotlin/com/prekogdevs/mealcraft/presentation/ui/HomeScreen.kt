@@ -1,34 +1,66 @@
 package com.prekogdevs.mealcraft.presentation.ui
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
+import androidx.activity.result.contract.ActivityResultContracts.TakePicture
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.prekogdevs.mealcraft.domain.IngredientUnit
 import com.prekogdevs.mealcraft.presentation.theme.MealCraftTheme
 import com.prekogdevs.mealcraft.presentation.ui.components.AppScreen
 import com.prekogdevs.mealcraft.presentation.ui.components.HeaderSection
 import com.prekogdevs.mealcraft.presentation.ui.components.ManualEntrySection
 import com.prekogdevs.mealcraft.presentation.ui.components.PhotoIngredientsSection
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(viewModel: AndroidHomeViewModel = koinViewModel()) {
+    val state by viewModel.shared.state.collectAsStateWithLifecycle()
+    val context = LocalContext.current
+
+    val cameraLauncher = rememberLauncherForActivityResult(TakePicture()) { success ->
+        viewModel.shared.onImageCaptured(success)
+    }
+
+    val permissionLauncher = rememberLauncherForActivityResult(RequestPermission()) { granted ->
+        if (granted) {
+            val uri = createImageUri(context)
+            viewModel.shared.onPendingImageUri(uri.toString())
+            cameraLauncher.launch(uri)
+        }
+    }
+
     AppScreen {
-        HomeScreenContent()
+        HomeScreenContent(
+            capturedImageUri = state.capturedImageUri,
+            onUploadClick = {
+                permissionLauncher.launch(Manifest.permission.CAMERA)
+            }
+        )
     }
 }
 
 @Composable
-private fun HomeScreenContent() {
+private fun HomeScreenContent(
+    capturedImageUri: String?,
+    onUploadClick: () -> Unit
+) {
     Spacer(modifier = Modifier.height(MealCraftTheme.spacing.space16))
     HeaderSection(
         onWeeklyMenuClick = { /* open weekly menu screen */ }
     )
     Spacer(modifier = Modifier.height(MealCraftTheme.spacing.space24))
     PhotoIngredientsSection(
-        onUploadClick = { /* launch photo picker */ },
+        capturedImageUri = capturedImageUri,
+        onUploadClick = onUploadClick,
     )
     Spacer(modifier = Modifier.height(MealCraftTheme.spacing.space16))
 
@@ -52,5 +84,8 @@ private fun HomeScreenContent() {
 @Composable
 @Preview
 private fun HomeScreenPreview() {
-    HomeScreen()
+    HomeScreenContent(
+        capturedImageUri = null,
+        onUploadClick = {}
+    )
 }

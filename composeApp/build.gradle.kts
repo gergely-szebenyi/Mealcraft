@@ -19,6 +19,9 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.androidx.activity.compose)
             implementation(libs.compose.material.icons)
+            implementation(libs.koin.android)
+            implementation(libs.koin.androidx.compose)
+            implementation(libs.coil.compose)
         }
         commonMain.dependencies {
             implementation(libs.compose.runtime)

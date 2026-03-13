@@ -8,6 +8,7 @@ import com.prekogdevs.mealcraft.R
 @Composable
 fun PhotoIngredientsSection(
     modifier: Modifier = Modifier,
+    capturedImageUri: String?,
     onUploadClick: () -> Unit
 ) {
     MealCraftCard(
@@ -15,6 +16,9 @@ fun PhotoIngredientsSection(
         title = stringResource(R.string.Label_Photo_Your_Ingredients),
         subtitle = stringResource(R.string.Label_Photo_Your_Ingredients_Desc)
     ) {
-        PhotoUploadArea(onClick = onUploadClick)
+        PhotoUploadArea(
+            capturedImageUri = capturedImageUri,
+            onClick = onUploadClick
+        )
     }
 }
